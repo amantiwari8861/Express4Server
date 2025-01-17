@@ -6,18 +6,18 @@ const { loginRouter } = require("./routers/loginRouter");
 const { loggingMiddleware } = require("./middlewares/application/LoggingMiddleWare");
 const cors = require('cors');
 
-const morgan = require("morgan");
-const fs = require('fs');
-const path = require('path');
-const accessLogStream = fs.createWriteStream(
-    path.join(__dirname, 'access.log'),
-    { flags: 'a' }
-);
+// const morgan = require("morgan");
+// const fs = require('fs');
+// const path = require('path');
+// const accessLogStream = fs.createWriteStream(
+//     path.join(__dirname, 'access.log'),
+//     { flags: 'a' }
+// );
 
 const app = express();
 // app.use(morgan("dev"));
 // Use Morgan to log into the file
-app.use(morgan('combined', { stream: accessLogStream }));
+// app.use(morgan('combined', { stream: accessLogStream }));
 app.use(cors({
     origin: 'http://localhost:5173' // Replace with your frontend URL
 }));
@@ -52,7 +52,7 @@ app.use("/api/v1", loginRouter);
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("mongoose connected with mongodb!"))
 
 
-module.export = app;
+module.exports = app;
 
 /* console.log("Hello in express!");
 console.log(process.env.SERVER_PORT);

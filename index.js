@@ -10,7 +10,7 @@ const morgan = require("morgan");
 const fs = require('fs');
 const path = require('path');
 const accessLogStream = fs.createWriteStream(
-    path.join(__dirname, 'access.log'), 
+    path.join(__dirname, 'access.log'),
     { flags: 'a' }
 );
 
@@ -48,8 +48,11 @@ app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Something broke!')
 })
-app.use("/api/v1",loginRouter);
-mongoose.connect(process.env.MONGO_URI).then(()=>console.log("mongoose connected with mongodb!"))
+app.use("/api/v1", loginRouter);
+mongoose.connect(process.env.MONGO_URI).then(() => console.log("mongoose connected with mongodb!"))
+
+
+module.export = app;
 
 /* console.log("Hello in express!");
 console.log(process.env.SERVER_PORT);

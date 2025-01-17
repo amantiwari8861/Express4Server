@@ -18,9 +18,10 @@ const app = express();
 // app.use(morgan("dev"));
 // Use Morgan to log into the file
 // app.use(morgan('combined', { stream: accessLogStream }));
-app.use(cors({
-    origin: 'http://localhost:5173' // Replace with your frontend URL
-}));
+// app.use(cors({
+//     origin: 'http://localhost:5173' // Replace with your frontend URL
+// }));
+app.use(cors());
 const HOST_NAME = process.env.HOST_NAME;
 const SERVER_PORT = process.env.SERVER_PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
